@@ -1,10 +1,10 @@
 [![npm](https://img.shields.io/npm/v/whatsapp-web-electron.js)](https://www.npmjs.com/package/whatsapp-web-electron.js) [![Depfu](https://badges.depfu.com/badges/4a65a0de96ece65fdf39e294e0c8dcba/overview.svg)](https://depfu.com/github/pedroslopez/whatsapp-web.js?project_id=9765) ![WhatsApp_Web 2.2210.9](https://img.shields.io/badge/WhatsApp_Web-2.2210.9-brightgreen.svg) [![Discord Chat](https://img.shields.io/discord/698610475432411196.svg?logo=discord)](https://discord.gg/H7DqQs4)  
 
+### This is an electron wrapper for [whatsapp-web.js](https://github.com/pedroslopez/whatsapp-web.js) which connect using [puppeteer-in-electron](https://github.com/TrevorSundberg/puppeteer-in-electron).
+
 A WhatsApp API client that connects through the WhatsApp Web browser app
 
 It uses Puppeteer to run a real instance of Whatsapp Web to avoid getting blocked.
-
-This is an electron wrapper for [whatsapp-web.js](https://github.com/pedroslopez/whatsapp-web.js) which connect using [puppeteer-in-electron](https://github.com/TrevorSundberg/puppeteer-in-electron).
 
 **NOTE:** I can't guarantee you will not be blocked by using this method, although it has worked for me. WhatsApp does not allow bots or unofficial clients on their platform, so this shouldn't be considered totally safe.
 
@@ -55,7 +55,9 @@ pie.connect(app, puppeteer).then((pieBrowser) => {
 
 Take a look at [whatsapp-web.js example.js](https://github.com/pedroslopez/whatsapp-web.js/blob/master/example.js) for another example with more use cases. The only difference should be the initialization process and a few feature (explained below).
 
-For more information on saving and restoring sessions, check out the available [Authentication Strategies](https://wwebjs.dev/guide/authentication.html).
+## Preserving Sessions
+
+The original project are using [Authentication Strategies](https://wwebjs.dev/guide/authentication.html) to save and restore sessions. No such thing are needed for electron since it already store its session, so the default `NoAuth` strategy works just fine.
 
 ## Remote Access and Docker
 
