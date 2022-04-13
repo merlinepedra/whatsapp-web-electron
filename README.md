@@ -1,6 +1,4 @@
-[![npm](https://img.shields.io/npm/v/whatsapp-web-electron.js)](https://www.npmjs.com/package/whatsapp-web-electron.js) [![Depfu](https://badges.depfu.com/badges/4a65a0de96ece65fdf39e294e0c8dcba/overview.svg)](https://depfu.com/github/pedroslopez/whatsapp-web.js?project_id=9765) ![WhatsApp_Web 2.2206.5](https://img.shields.io/badge/WhatsApp_Web-2.2206.5-brightgreen.svg)  
-
-# whatsapp-web-electron.js
+[![npm](https://img.shields.io/npm/v/whatsapp-web-electron.js)](https://www.npmjs.com/package/whatsapp-web-electron.js) [![Depfu](https://badges.depfu.com/badges/4a65a0de96ece65fdf39e294e0c8dcba/overview.svg)](https://depfu.com/github/pedroslopez/whatsapp-web.js?project_id=9765) ![WhatsApp_Web 2.2210.9](https://img.shields.io/badge/WhatsApp_Web-2.2210.9-brightgreen.svg) [![Discord Chat](https://img.shields.io/discord/698610475432411196.svg?logo=discord)](https://discord.gg/H7DqQs4)  
 
 A WhatsApp API client that connects through the WhatsApp Web browser app
 
@@ -57,23 +55,23 @@ pie.connect(app, puppeteer).then((pieBrowser) => {
 
 Take a look at [whatsapp-web.js example.js](https://github.com/pedroslopez/whatsapp-web.js/blob/master/example.js) for another example with more use cases. The only difference should be the initialization process and a few feature (explained below).
 
+For more information on saving and restoring sessions, check out the available [Authentication Strategies](https://wwebjs.dev/guide/authentication.html).
+
 ## Remote Access and Docker
 
 The original [whatsapp-web.js](https://github.com/pedroslopez/whatsapp-web.js) has remote access feature and supports docker which is irrelevant for an electron project, that's why I didn't include it here.
 
-## Sending Arbitrary Image as Sticker
-
-Sending image as sticker requires [sharp](https://github.com/lovell/sharp/releases) package and it's difficult to package with electron, so I choose to remove it. Feel free to open a PR if you can fix this issue.
 
 ## Supported features
 
 | Feature  | Status |
 | ------------- | ------------- |
+| Multi Device  | ✅  |
 | Send messages  | ✅  |
 | Receive messages  | ✅  |
 | Send media (images/audio/documents)  | ✅  |
 | Send media (video)  | ✅ [(requires google chrome)](https://wwebjs.dev/guide/handling-attachments.html#caveat-for-sending-videos-and-gifs)  |
-| Send stickers | ✅ [(can't send arbitrary image)](#sending-arbitrary-image-as-sticker) |
+| Send stickers | ✅ |
 | Receive media (images/audio/video/documents)  | ✅  |
 | Send contact cards | ✅ |
 | Send location | ✅ |
@@ -100,6 +98,14 @@ Something missing? Make an issue and let us know!
 ## Contributing
 
 Pull requests are welcome! If you see something you'd like to add, please do. For drastic changes, please open an issue first.
+
+## Supporting the project
+
+You can support the maintainer of original [whatsapp-web.js](https://github.com/pedroslopez/whatsapp-web.js) project through the links below
+
+- [Support via GitHub Sponsors](https://github.com/sponsors/pedroslopez)
+- [Support via PayPal](https://www.paypal.me/psla/)
+- [Sign up for DigitalOcean](https://m.do.co/c/73f906a36ed4) and get $100 in credit when you sign up (Referral)
 
 ## Disclaimer
 
