@@ -305,8 +305,9 @@ class Message extends Base {
         if (!this.hasQuotedMsg) return undefined;
 
         const quotedMsg = await this.client.pupPage.evaluate((msgId) => {
-            let msg = window.Store.Msg.get(msgId);
-            return msg.quotedMsgObj().serialize();
+            const msg = window.Store.Msg.get(msgId);
+            const quotedMsg = window.Store.QuotedMsg.getQuotedMsgObj(msg);
+            return window.WWebJS.getMessageModel(quotedMsg);
         }, this.id._serialized);
 
         return new Message(this.client, quotedMsg);
@@ -385,7 +386,9 @@ class Message extends Base {
 
         const result = await this.client.pupPage.evaluate(async (msgId) => {
             const msg = window.Store.Msg.get(msgId);
-
+            if (!msg) {
+                return undefined;
+            }
             if (msg.mediaData.mediaStage != 'RESOLVED') {
                 // try to resolve media
                 await msg.downloadMedia({
@@ -400,7 +403,7 @@ class Message extends Base {
             }
 
             try {
-                const decryptedMedia = await window.Store.DownloadManager.downloadAndDecrypt({
+                const decryptedMedia = await window.Store.DownloadManager.downloadAndMaybeDecrypt({
                     directPath: msg.directPath,
                     encFilehash: msg.encFilehash,
                     filehash: msg.filehash,
@@ -436,7 +439,8 @@ class Message extends Base {
         await this.client.pupPage.evaluate((msgId, everyone) => {
             let msg = window.Store.Msg.get(msgId);
 
-            if (everyone && msg._canRevoke()) {
+            const canRevoke = window.Store.MsgActionChecks.canSenderRevokeMsg(msg) || window.Store.MsgActionChecks.canAdminRevokeMsg(msg);
+            if (everyone && canRevoke) {
                 return window.Store.Cmd.sendRevokeMsgs(msg.chat, [msg], { type: msg.id.fromMe ? 'Sender' : 'Admin' });
             }
 
@@ -451,7 +455,7 @@ class Message extends Base {
         await this.client.pupPage.evaluate((msgId) => {
             let msg = window.Store.Msg.get(msgId);
 
-            if (msg.canStar()) {
+            if (window.Store.MsgActionChecks.canStarMsg(msg)) {
                 return window.Store.Cmd.sendStarMsgs(msg.chat, [msg], false);
             }
         }, this.id._serialized);
@@ -464,7 +468,7 @@ class Message extends Base {
         await this.client.pupPage.evaluate((msgId) => {
             let msg = window.Store.Msg.get(msgId);
 
-            if (msg.canStar()) {
+            if (window.Store.MsgActionChecks.canStarMsg(msg)) {
                 return window.Store.Cmd.sendUnstarMsgs(msg.chat, [msg], false);
             }
         }, this.id._serialized);
@@ -490,7 +494,7 @@ class Message extends Base {
             const msg = window.Store.Msg.get(msgId);
             if (!msg) return null;
 
-            return await window.Store.MessageInfo.sendQueryMsgInfo(msg);
+            return await window.Store.MessageInfo.sendQueryMsgInfo(msg.id);
         }, this.id._serialized);
 
         return info;

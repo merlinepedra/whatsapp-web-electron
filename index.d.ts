@@ -148,6 +148,12 @@ declare namespace WAWebJS {
         /** Unmutes the Chat */
         unmuteChat(chatId: string): Promise<void>
 
+        /** Sets the current user's profile picture */
+        setProfilePicture(media: MessageMedia): Promise<boolean>
+
+        /** Deletes the current user's profile picture */
+        deleteProfilePicture(): Promise<boolean>
+
         /** Generic event */
         on(event: string, listener: (...args: any) => void): this
 
@@ -506,7 +512,8 @@ declare namespace WAWebJS {
         DISCONNECTED = 'disconnected',
         STATE_CHANGED = 'change_state',
         BATTERY_CHANGED = 'change_battery',
-        REMOTE_SESSION_SAVED = 'remote_session_saved'
+        REMOTE_SESSION_SAVED = 'remote_session_saved',
+        CALL = 'call'
     }
 
     /** Group notification types */
@@ -1161,6 +1168,10 @@ declare namespace WAWebJS {
         revokeInvite: () => Promise<void>;
         /** Makes the bot leave the group */
         leave: () => Promise<void>;
+        /** Sets the group's picture.*/
+        setPicture: (media: MessageMedia) => Promise<boolean>;
+        /** Deletes the group's picture */
+        deletePicture: () => Promise<boolean>;
     }
 
     /**
@@ -1326,6 +1337,9 @@ declare namespace WAWebJS {
         webClientShouldHandle: boolean,
         /** Object with participants */
         participants: object
+
+        /** Reject the call */
+        reject: () => Promise<void>
     }
 
     /** Message type List */

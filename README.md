@@ -1,4 +1,4 @@
-[![npm](https://img.shields.io/npm/v/whatsapp-web-electron.js)](https://www.npmjs.com/package/whatsapp-web-electron.js) [![Depfu](https://badges.depfu.com/badges/4a65a0de96ece65fdf39e294e0c8dcba/overview.svg)](https://depfu.com/github/pedroslopez/whatsapp-web.js?project_id=9765) ![WhatsApp_Web 2.2241.6](https://img.shields.io/badge/WhatsApp_Web-2.2241.6-brightgreen.svg) [![Discord Chat](https://img.shields.io/discord/698610475432411196.svg?logo=discord)](https://discord.gg/H7DqQs4) 
+[![npm](https://img.shields.io/npm/v/whatsapp-web-electron.js)](https://www.npmjs.com/package/whatsapp-web-electron.js) [![Depfu](https://badges.depfu.com/badges/4a65a0de96ece65fdf39e294e0c8dcba/overview.svg)](https://depfu.com/github/pedroslopez/whatsapp-web.js?project_id=9765) ![WhatsApp_Web 2.2306.7](https://img.shields.io/badge/WhatsApp_Web-2.2241.6-brightgreen.svg) [![Discord Chat](https://img.shields.io/discord/698610475432411196.svg?logo=discord)](https://discord.gg/H7DqQs4) 
 
 ### This is an electron wrapper for [whatsapp-web.js](https://github.com/pedroslopez/whatsapp-web.js) which connect using [puppeteer-in-electron](https://github.com/TrevorSundberg/puppeteer-in-electron).
 
@@ -108,7 +108,7 @@ You can support the maintainer of original [whatsapp-web.js](https://github.com/
 
 - [Support via GitHub Sponsors](https://github.com/sponsors/pedroslopez)
 - [Support via PayPal](https://www.paypal.me/psla/)
-- [Sign up for DigitalOcean](https://m.do.co/c/73f906a36ed4) and get $100 in credit when you sign up (Referral)
+- [Sign up for DigitalOcean](https://m.do.co/c/73f906a36ed4) and get $200 in credit when you sign up (Referral)
 
 ## Disclaimer
 
